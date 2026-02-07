@@ -1,0 +1,173 @@
+/* --- Fonts & Imports --- */
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("heart-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    font-family: "Pixelify Sans", sans-serif;
+    overflow: hidden; 
+}
+
+/* --- Envelope Screen --- */
+#envelope-container {
+    text-align: center;
+    cursor: pointer;
+}
+
+#envelope-container p {
+    font-size: 32px;
+    color: #FF6B81; 
+    text-shadow: 2px 2px 0px #ffffff;
+    margin-top: 15px;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }   
+}
+
+#envelope {
+     width: 220px;
+     animation: pulse 1.5s infinite;
+}
+
+/* --- Letter Screen Container --- */
+#letter-container {
+    display: none;
+    position: fixed;
+    inset: 0;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    background-color: rgba(255, 230, 235, 0.2); 
+    backdrop-filter: blur(2px);
+}
+
+.letter-window {
+    width: 90vw;
+    max-width: 700px;
+    /* Flexible height so it expands with the "Yes" button */
+    min-height: 550px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    /* BACKGROUND FIX: Forces image to perfectly match the div size */
+    background-image: url("window.png");
+    background-size: 100% 100%; 
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    /* Reduced padding to keep content inside the frame */
+    padding: 40px; 
+    box-sizing: border-box;
+
+    /* Animation */
+    transform: scale(1.2);
+    opacity: 0;
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.6s ease;
+}
+
+.letter-window.open {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* --- Typography --- */
+h1 {
+    font-size: 32px;
+    color: #5D3A37; 
+    margin: 0 0 10px 0;
+    text-shadow: 2px 2px 0px #ffffff;
+}
+
+/* --- Cat Styling --- */
+.cat {
+    width: 240px; 
+    max-width: 80%;
+    margin: 10px 0;
+    transition: width 0.4s ease;
+}
+
+/* --- Buttons Area --- */
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    position: relative;
+    min-height: 120px; 
+    width: 100%;
+}
+
+/* Reset for the button tags suggested in HTML */
+.img-btn {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+}
+
+.btn, .img-btn img {
+    width: 120px;
+    height: auto;
+    display: block;
+}
+
+.yes-btn {
+    position: relative;
+    z-index: 5;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.no-btn {
+    position: relative;
+    z-index: 4;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* --- Final Reward Text --- */
+.final-text {
+    font-size: 18px;
+    line-height: 1.4;
+    color: #5D3A37; 
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 3px solid #FFB7C5; 
+    border-radius: 15px;
+    padding: 15px 20px;
+    margin-top: 10px;
+    max-width: 85%;
+    box-shadow: 0 4px 0px #FFB7C5; 
+    animation: floating 3s ease-in-out infinite;
+}
+
+.final-text strong {
+    color: #FF6B81; 
+}
+
+@keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
+
+/* --- Responsive for Mobile --- */
+@media (max-width: 600px) {
+    .letter-window { 
+        padding: 30px;
+        min-height: 450px;
+    }
+    h1 { font-size: 22px; }
+    .cat { width: 180px; }
+    .btn, .img-btn img { width: 90px; }
+}
